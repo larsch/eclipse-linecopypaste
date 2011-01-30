@@ -6,6 +6,8 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.ui.internal.part.IMultiPageEditorSiteHolder;
+import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
 
@@ -18,8 +20,20 @@ public class Utility {
 	public static ITextEditor getEditorForEvent(ExecutionEvent event)
 			throws ExecutionException {
 		IEditorPart part = HandlerUtil.getActiveEditorChecked(event);
-
-		return (ITextEditor) part;
+		if (part instanceof ITextEditor)
+		{
+			return (ITextEditor) part;
+		}
+		else if (part instanceof MultiPageEditorPart)
+		{
+			MultiPageEditorPart multiPart = (MultiPageEditorPart)part;
+			Object page = multiPart.getSelectedPage();
+			if (page instanceof ITextEditor)
+			{
+				return (ITextEditor)page;
+			}
+		}
+		return null;
 	}
 
 	public static IDocument getCurrentDocument(ExecutionEvent event)
