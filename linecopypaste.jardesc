@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="com.larsch.linecopypaste/linecopypaste.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/com.larsch.linecopypaste/linecopypaste.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="false" manifestLocation="/com.larsch.linecopypaste/META-INF/MANIFEST.MF" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <folder path="/com.larsch.linecopypaste/META-INF"/>
+        <file path="/com.larsch.linecopypaste/build.properties"/>
+        <file path="/com.larsch.linecopypaste/.classpath"/>
+        <file path="/com.larsch.linecopypaste/plugin.xml"/>
+        <file path="/com.larsch.linecopypaste/.project"/>
+        <javaElement handleIdentifier="=com.larsch.linecopypaste/src"/>
+        <folder path="/com.larsch.linecopypaste/icons"/>
+    </selectedElements>
+</jardesc>
