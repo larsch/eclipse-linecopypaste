@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.ui.commands">
+      <category name="SmartClip" id="com.larsch.linecopypaste.commands.category"/>
+      <command name="Smart Cut" categoryId="com.larsch.linecopypaste.commands.category" id="com.larsch.linecopypaste.commands.smartCut"/>
+      <command name="Smart Copy" categoryId="com.larsch.linecopypaste.commands.category" id="com.larsch.linecopypaste.commands.smartCopy"/>
+      <command name="Smart Copy" categoryId="com.larsch.linecopypaste.commands.category" id="com.larsch.linecopypaste.commands.smartPaste"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers">
+      <handler commandId="com.larsch.linecopypaste.commands.smartCut" class="com.larsch.linecopypaste.handlers.CutHandler"/>
+      <handler commandId="com.larsch.linecopypaste.commands.smartCopy" class="com.larsch.linecopypaste.handlers.CopyHandler"/>
+	  <handler commandId="com.larsch.linecopypaste.commands.smartPaste" class="com.larsch.linecopypaste.handlers.PasteHandler"/>
+   </extension>
+	  
+   <extension point="org.eclipse.ui.bindings">
+      <key commandId="com.larsch.linecopypaste.commands.smartCut" contextId="org.eclipse.ui.textEditorScope" sequence="M1+X" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key commandId="com.larsch.linecopypaste.commands.smartCopy" contextId="org.eclipse.ui.textEditorScope" sequence="M1+C" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key commandId="com.larsch.linecopypaste.commands.smartPaste" contextId="org.eclipse.ui.textEditorScope" sequence="M1+V" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+</plugin>
