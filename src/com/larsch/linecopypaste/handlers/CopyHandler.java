@@ -25,7 +25,6 @@ public class CopyHandler extends AbstractHandler {
 		ITextSelection textSelection = Utility.getTextSelection(event);
 		ITextEditor editor = Utility.getEditorForEvent(event);
 		if (textSelection.getLength() == 0) {
-
 			org.eclipse.swt.dnd.Clipboard cb = new org.eclipse.swt.dnd.Clipboard(
 					PlatformUI.getWorkbench().getDisplay());
 			IDocument doc = Utility.getCurrentDocument(event);
