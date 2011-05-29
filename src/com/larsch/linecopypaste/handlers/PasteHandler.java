@@ -30,17 +30,35 @@ public class PasteHandler extends AbstractHandler {
 		String textData = (String) cb.getContents(tt);
 
 		ITextSelection textSelection = Utility.getTextSelection(event);
-		if (textData.charAt(textData.length() - 1) == 10
-				&& textSelection.getLength() == 0) {
+
+		int adjustment = 0;
+
+		boolean lastCharIsNewLine = textData.charAt(textData.length() - 1) == 10;
+		boolean selectionIsEmpty = textSelection.getLength() == 0;
+
+		if (lastCharIsNewLine && selectionIsEmpty) {
 			IDocument doc = Utility.getCurrentDocument(event);
 			try {
-				TextSelection ts = new TextSelection(
-						doc.getLineOffset(textSelection.getStartLine()), 0);
+				// Move cursor to start of line
+				int lineOffset = doc
+						.getLineOffset(textSelection.getStartLine());
+				TextSelection ts = new TextSelection(lineOffset, 0);
 				editor.getSelectionProvider().setSelection(ts);
+				adjustment = lineOffset - textSelection.getOffset();
 			} catch (BadLocationException e) {
 			}
 		}
+		
+		// Paste!
 		editor.getAction(ITextEditorActionConstants.PASTE).run();
+
+		// Move the cursor back where it was
+		if (adjustment != 0) {
+			ITextSelection newSelection = Utility.getTextSelection(event);
+			TextSelection ts = new TextSelection(newSelection.getOffset()
+					- adjustment, 0);
+			editor.getSelectionProvider().setSelection(ts);
+		}
 		return null;
 	}
 }
